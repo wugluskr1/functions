@@ -1,3 +1,5 @@
+from random import randint
+import math
 def new_func():
     lst = input(("Enter a string:"))
     lst = lst.lower()
@@ -25,3 +27,22 @@ def outer(n):
     inner()
 
 outer(int(input(("Enter a number:" ))))
+
+def sqrt():
+    j = int(input("\nВведите число символов в списке: "))
+    numbers =  [randint(1, 100) for i in range(j)]
+    print(numbers)
+    while True:
+        try:
+            flag = int(input("\nВведите направление округления (0 - в меньшую сторону 1 - в большую): "))
+            if flag == 0 or flag == 1: 
+                break
+        except ValueError:
+            print('\nНеправильный ввод, повторите')
+    if flag == 0:
+        numbers = list(map(lambda x: math.floor(x**(0.5)), numbers))
+    else:
+        numbers = list(map(lambda x: math.ceil(x**(0.5)), numbers))
+    return numbers
+print(sqrt())
+
