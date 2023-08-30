@@ -1,5 +1,7 @@
 from random import randint
 import math
+import time
+
 def new_func():
     lst = input(("Enter a string:"))
     lst = lst.lower()
@@ -28,6 +30,15 @@ def outer(n):
 
 outer(int(input(("Enter a number:" ))))
 
+def time_of_function(function):
+    def wrapped(*args):
+        start_time = time.perf_counter_ns()
+        res = function(*args)
+        print("Время:",time.perf_counter_ns() - start_time)
+        return res
+    return wrapped
+
+@time_of_function
 def sqrt():
     j = int(input("\nВведите число символов в списке: "))
     numbers =  [randint(1, 100) for i in range(j)]
